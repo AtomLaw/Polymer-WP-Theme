@@ -4,25 +4,27 @@ Style sheet for AllTheTheme
 
 */
 
-//Load the site variables
-@import 'variables';
-
-
-//load anything that is used to create other elements
-@import 'constructors/generic-placeholder';//see notes in file
-@import 'constructors/functions';
-@import 'constructors/clearfix';//see notes in file
-
-//Core styles
-@import 'core/reset'; //normalize is also available
-
-
-//Modules for things like nav, content
-//@import 'modules/module-name';
-
-//Default Wordpress classes for your enjoyment/ hacking!
-@import 'modules/wp-core';
-
-
-//Print styles & misc.
-@import 'modules/print';
+// Sass utilities
+@import "helpers/variables";
+@import "helpers/functions";
+@import "helpers/mixins";
+@import "helpers/helpers";
+ 
+// Base stuff
+@import "base/reset";
+@import "base/typography";
+ 
+// Layout related stylesheets
+@import "layout/grid";
+@import "layout/header";
+@import "layout/footer";
+@import "layout/sidebar";
+ 
+// Components and modules
+@import "components/buttons";
+@import "components/dropdown";
+ 
+// Page-specific stylesheets
+@import "pages/home";
+@import "pages/contact";
+ 
