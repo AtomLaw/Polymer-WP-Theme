@@ -13,6 +13,7 @@ Style sheet for AllTheTheme
 // Base stuff
 @import "base/reset";
 @import "base/typography";
+
  
 // Layout related stylesheets
 @import "layout/grid";
@@ -23,8 +24,8 @@ Style sheet for AllTheTheme
 // Components and modules
 @import "components/buttons";
 @import "components/dropdown";
+@import "components/polymer";
  
 // Page-specific stylesheets
 @import "pages/home";
 @import "pages/contact";
- 

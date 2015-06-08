@@ -36,7 +36,7 @@
 
 	    
 	function allthetheme_enqueue_scripts() {
-	    wp_enqueue_style( 'allthetheme-styles', get_template_directory_uri() . '/static/css/combined.css' ); //our stylesheet
+	    wp_enqueue_style( 'allthetheme-styles', get_template_directory_uri() . '/static/css/style.css' ); //our stylesheet
 	    wp_enqueue_script( 'jquery' );
 	    if ( is_singular() ) wp_enqueue_script( 'comment-reply' );
 	}

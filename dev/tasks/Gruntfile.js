@@ -19,36 +19,23 @@ module.exports = function (grunt) {
       css: {
         files: '../src/scss/**/*.scss',
         tasks: ['sass:dev', 'autoprefixer', 'notify:sassDone'],
-        options: {
-          livereload: true,
-        },
+        
       },
       js: {
         files: '../src/js/**/*.js',
         tasks: ['concat'],
-        options: {
-          livereload: true,
-        },
       },
       php: {
         files: '../../**/*.php',
-        options: {
-          livereload: true,
-        },
+        
       },
       images: {
         files: '../src/images/**/*.{png,jpg,gif,svg}',
         tasks: ['copy:images'],
-        options: {
-          livereload: true,
-        },
       },
       fonts: {
         files: '../src/fonts/**/*',
         tasks: ['copy:fonts'],
-        options: {
-          livereload: true,
-        }
       },
       bower: {
         files: './bower.json',
@@ -57,10 +44,7 @@ module.exports = function (grunt) {
       'polymer': {
         files: '../src/polymer/**/*',
         tasks: ['vulcanize'],
-        options: {
-          livereload: true
-        }
-      }
+      },
     },
     // end watch
     wiredep: {
@@ -115,7 +99,7 @@ module.exports = function (grunt) {
       minify: {
         expand: true,
         cwd: '../../static/css',
-        src: ['*.css', '!*.min.css'],
+        src: ['../../static/css/style.css'],
         dest: '../../static/css',
         ext: '.css',
         report: 'gzip'
@@ -130,10 +114,6 @@ module.exports = function (grunt) {
         src: ['../src/js/*.js'],
         dest: '../../static/js/build.js',
       },
-      css: {
-        src: [ '../../static/css/*.css' ],
-        dest: '../../static/css/combined.css'
-      }
     },
     //end concat
     
@@ -232,30 +212,19 @@ module.exports = function (grunt) {
     vulcanize: {
        default: {
          option: {
-          inline: true,
-          strip: true,
-          csp: true,
-          abspath: '<%= app.root %>/wp-content/theme/<%= app.name %>'
+          stripExcludes: false,
+          inlineScripts: false,
+          inlineCss: false,
+          implicitStrip: true,
+          stripComments: false,
+          abspath: ''
          },
          files: {
-           '../../buld-elements.html': ['../src/polymer/elements.html', '../src/polymer/**/*.html']
+           '../../buld-elements.html': ['../src/polymer/elements.html']
          },
        },
      },
      //end vulcanize
-
-    // make a zipfile
-    compress: {
-      production: {
-        options: {
-          archive: '../../production/allthetheme.zip'
-        },
-        files: [
-          { src: ['../../**/*',  '!../../dev/**', '!../../production/**'] },
-        ]
-      }
-    }
-    // end make a zipfile
     
   }); //end grunt package configs
 

@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": ";;;;;AAAA,eAAgB;EACf,gBAAgB,EAAE,GAAG",
+"sources": ["../../dev/src/scss/components/_polymer.scss"],
 "names": [],
 "file": "style.css"
 }
