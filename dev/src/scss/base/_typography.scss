@@ -1,0 +1,18 @@
+//
+// Typography
+// --------------------------------------------------
+
+
+// Headings
+// -------------------------
+
+$headings-color:          #FF0000 !default;
+
+h1 a, .h1,
+h2 a, .h2,
+h3 a, .h3 {
+ 
+  color: $headings-color;
+  text-decoration: none;
+  font-weight: bold;
+}
