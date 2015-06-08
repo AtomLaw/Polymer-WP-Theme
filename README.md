@@ -2,13 +2,13 @@
 
 This README would normally document whatever steps are necessary to get your application up and running.
 
-### What is this repository for? ###
+## What is this repository for? ##
 
 * Quick summary
 * Version
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
-### How do I get set up? ###
+## How do I get set up? ##
 
 * Summary of set up
 * Configuration
@@ -17,13 +17,13 @@ This README would normally document whatever steps are necessary to get your app
 * How to run tests
 * Deployment instructions
 
-#### Summary of set up ####
+### Summary of set up ###
 
-*run npm install in dev/tasks/
-*run bower install in dev/tasks/
-*run grunt init in dev/tasks/ 
+* run npm install in dev/tasks/
+* run bower install in dev/tasks/
+* run grunt init in dev/tasks/ 
 
-### Contribution guidelines ###
+## Contribution guidelines ##
 
 * Writing tests
 * Code review
