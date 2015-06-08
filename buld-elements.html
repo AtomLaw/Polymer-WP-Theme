@@ -9771,6 +9771,72 @@ Custom property | Description | Default
 
 
 
+
+
+
+<!--
+
+`paper-material` is a container that renders two shadows on top of each other to
+create the effect of a lifted piece of paper.
+
+Example:
+
+    <paper-material elevation="1">
+      ... content ...
+    </paper-material>
+
+@group Paper Elements
+@class paper-material
+@demo demo/index.html
+-->
+
+
+
+
+
+<!--
+Material Design: <a href="http://www.google.com/design/spec/components/buttons.html">Button</a>
+
+`paper-fab` is a floating action button. It contains an image placed in the center and
+comes in two sizes: regular size and a smaller size by applying the attribute `mini`. When
+the user touches the button, a ripple effect emanates from the center of the button.
+
+You may import `iron-icons` to use with this element, or provide a URL to a custom icon.
+See `iron-iconset` for more information about how to use a custom icon set.
+
+Example:
+
+    <link href="path/to/iron-icons/iron-icons.html" rel="import">
+
+    <paper-fab icon="add"></paper-fab>
+    <paper-fab mini icon="favorite"></paper-fab>
+    <paper-fab src="star.png"></paper-fab>
+
+
+### Styling
+
+The following custom properties and mixins are available for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--paper-fab-background` | The background color of the button | `--paper-indigo-500`
+`--paper-fab-disabled-background` | The background color of the button when it's disabled | `--paper-grey-300`
+`--paper-fab-disabled-text` | The text color of the button when it's disabled | `--paper-grey-500`
+`--paper-fab` | Mixin applied to the button | `{}`
+`--paper-fab-mini` | Mixin applied to a mini button | `{}`
+`--paper-fab-disabled` | Mixin applied to a disabled button | `{}`
+
+@group Paper Elements
+@demo demo/index.html
+
+-->
+
+
+
+
+
+
+
 <script>
 
   /**
@@ -10018,25 +10084,6 @@ of a menu item will also focus it.
 @demo demo/index.html
 -->
 
-
-
-
-
-<!--
-
-`paper-material` is a container that renders two shadows on top of each other to
-create the effect of a lifted piece of paper.
-
-Example:
-
-    <paper-material elevation="1">
-      ... content ...
-    </paper-material>
-
-@group Paper Elements
-@class paper-material
-@demo demo/index.html
--->
 
 
 
@@ -13359,6 +13406,179 @@ iron-selector:not(.narrow-layout) #main ::content [paper-drawer-toggle] {
   });
 </script>
 
+<dom-module id="paper-material">
+  <style>
+    :host {
+      display: block;
+      position: relative;
+      @apply(--shadow-transition);
+    }
+
+    :host([elevation="1"]) {
+      @apply(--shadow-elevation-2dp);
+    }
+
+    :host([elevation="2"]) {
+      @apply(--shadow-elevation-4dp);
+    }
+
+    :host([elevation="3"]) {
+      @apply(--shadow-elevation-6dp);
+    }
+
+    :host([elevation="4"]) {
+      @apply(--shadow-elevation-8dp);
+    }
+
+    :host([elevation="5"]) {
+      @apply(--shadow-elevation-16dp);
+    }
+  </style>
+  <template>
+    <content></content>
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: 'paper-material',
+
+    properties: {
+
+      /**
+       * The z-depth of this element, from 0-5. Setting to 0 will remove the
+       * shadow, and each increasing number greater than 0 will be "deeper"
+       * than the last.
+       *
+       * @attribute elevation
+       * @type number
+       * @default 1
+       */
+      elevation: {
+        type: Number,
+        reflectToAttribute: true,
+        value: 1
+      },
+
+      /**
+       * Set this to true to animate the shadow when setting a new
+       * `elevation` value.
+       *
+       * @attribute animated
+       * @type boolean
+       * @default false
+       */
+      animated: {
+        type: Boolean,
+        reflectToAttribute: true,
+        value: false
+      }
+    }
+  });
+</script>
+<dom-module id="paper-fab">
+  <style>
+
+    :host {
+      display: inline-block;
+      position: relative;
+      outline: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -webkit-user-select: none;
+      user-select: none;
+      cursor: pointer;
+
+      box-sizing: border-box;
+      min-width: 0;
+      width: 56px;
+      height: 56px;
+      background: var(--paper-fab-background, --paper-indigo-500);
+      color: var(--text-primary-color);
+      border-radius: 50%;
+      padding: 16px;
+
+      z-index: 0;
+
+      @apply(--paper-fab);
+    }
+
+    :host([mini]) {
+      width: 40px;
+      height: 40px;
+      padding: 8px;
+
+      @apply(--paper-fab-mini);
+    }
+
+    :host([disabled]) {
+      color: var(--paper-fab-disabled-text, --paper-grey-500);
+      background: var(--paper-fab-disabled-background, --paper-grey-300);
+      @apply(--paper-fab-disabled);
+    }
+
+    paper-material {
+      border-radius: inherit;
+    }
+  </style>
+  <template>
+    <paper-ripple></paper-ripple>
+    <paper-material class="content fit flex layout vertical center-center" elevation="[[elevation]]" animated="">
+      <iron-icon id="icon" src="dev/bower_components/paper-fab/[[src]]" icon="[[icon]]"></iron-icon>
+    </paper-material>
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: 'paper-fab',
+
+    behaviors: [
+      Polymer.PaperButtonBehavior
+    ],
+
+    properties: {
+      /**
+       * The URL of an image for the icon. If the src property is specified,
+       * the icon property should not be.
+       *
+       * @attribute src
+       * @type string
+       * @default ''
+       */
+      src: {
+        type: String,
+        value: ''
+      },
+
+      /**
+       * Specifies the icon name or index in the set of icons available in
+       * the icon's icon set. If the icon property is specified,
+       * the src property should not be.
+       *
+       * @attribute icon
+       * @type string
+       * @default ''
+       */
+      icon: {
+        type: String,
+        value: ''
+      },
+
+      /**
+       * Set this to true to style this is a "mini" FAB.
+       *
+       * @attribute mini
+       * @type boolean
+       * @default false
+       */
+      mini: {
+        type: Boolean,
+        value: false
+      }
+    }
+
+  });
+</script>
+
 <dom-module id="paper-menu">
 
   <style>
@@ -13433,76 +13653,6 @@ iron-selector:not(.narrow-layout) #main ::content [paper-drawer-toggle] {
 
 })();
 
-</script>
-
-<dom-module id="paper-material">
-  <style>
-    :host {
-      display: block;
-      position: relative;
-      @apply(--shadow-transition);
-    }
-
-    :host([elevation="1"]) {
-      @apply(--shadow-elevation-2dp);
-    }
-
-    :host([elevation="2"]) {
-      @apply(--shadow-elevation-4dp);
-    }
-
-    :host([elevation="3"]) {
-      @apply(--shadow-elevation-6dp);
-    }
-
-    :host([elevation="4"]) {
-      @apply(--shadow-elevation-8dp);
-    }
-
-    :host([elevation="5"]) {
-      @apply(--shadow-elevation-16dp);
-    }
-  </style>
-  <template>
-    <content></content>
-  </template>
-</dom-module>
-<script>
-  Polymer({
-    is: 'paper-material',
-
-    properties: {
-
-      /**
-       * The z-depth of this element, from 0-5. Setting to 0 will remove the
-       * shadow, and each increasing number greater than 0 will be "deeper"
-       * than the last.
-       *
-       * @attribute elevation
-       * @type number
-       * @default 1
-       */
-      elevation: {
-        type: Number,
-        reflectToAttribute: true,
-        value: 1
-      },
-
-      /**
-       * Set this to true to animate the shadow when setting a new
-       * `elevation` value.
-       *
-       * @attribute animated
-       * @type boolean
-       * @default false
-       */
-      animated: {
-        type: Boolean,
-        reflectToAttribute: true,
-        value: false
-      }
-    }
-  });
 </script>
 
 /*
