@@ -3,7 +3,9 @@ module.exports = function (grunt) {
   require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
 
   var appConfig = {
-    src: require('./bower.json').appPath || '../..'
+    src: require('./bower.json').appPath || '../..',
+    root: 'http://localhost:8888/wpPoly/',
+    name: require('./bower.json').name || 'allthetheme'
   };
 
   // 1. All configuration goes here
@@ -23,7 +25,7 @@ module.exports = function (grunt) {
       },
       js: {
         files: '../src/js/**/*.js',
-        tasks: ['copy:js'],
+        tasks: ['concat'],
         options: {
           livereload: true,
         },
@@ -51,6 +53,13 @@ module.exports = function (grunt) {
       bower: {
         files: './bower.json',
         tasks: ['wiredep']
+      },
+      'polymer': {
+        files: '../src/polymer/**/*',
+        tasks: ['vulcanize'],
+        options: {
+          livereload: true
+        }
       }
     },
     // end watch
@@ -225,6 +234,8 @@ module.exports = function (grunt) {
          option: {
           inline: true,
           strip: true,
+          csp: true,
+          abspath: '<%= app.root %>/wp-content/theme/<%= app.name %>'
          },
          files: {
            '../../buld-elements.html': ['../src/polymer/elements.html', '../src/polymer/**/*.html']
