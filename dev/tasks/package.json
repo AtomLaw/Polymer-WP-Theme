@@ -26,6 +26,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "grunt-concat-css": "^0.3.1",
     "grunt-vulcanize": "^0.6.4"
   }
 }

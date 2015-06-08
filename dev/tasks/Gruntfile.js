@@ -73,7 +73,6 @@ module.exports = function (grunt) {
         },
         files: { // Dictionary of files
           '../../static/css/style.css': '../src/scss/style.scss',
-          '../../static/css/ie.css': '../src/scss/ie.scss',
         }
       },
       dist: { // Target
@@ -82,7 +81,6 @@ module.exports = function (grunt) {
         },
         files: { // Dictionary of files
           '../../static/css/style.css': '../src/scss/style.scss',
-          '../../static/css/ie.css': '../src/scss/ie.scss',
         }
       }
     },
@@ -120,13 +118,11 @@ module.exports = function (grunt) {
         options: {
           'separator': ';',
         },
-        dist: {
-          src: ['../src/js/*.js'],
-          dest: '../../static/js/build.js',
-        },
+        src: ['../src/js/*.js'],
+        dest: '../../static/js/build.js',
       },
       css: {
-        src: [ '../../static/css/*.js' ],
+        src: [ '../../static/css/*.css' ],
         dest: '../../static/css/combined.css'
       }
     },
@@ -195,7 +191,7 @@ module.exports = function (grunt) {
       js: {
         files: [
           // includes files within path
-          {expand: true, cwd: '../src/js', src: ['*.js'], dest: '../../static/js', filter: 'isFile'},
+          {expand: true, cwd: '../src/js', src: ['build.js'], dest: '../../static/js', filter: 'isFile'},
         ]
       },
       images: {
@@ -265,7 +261,7 @@ module.exports = function (grunt) {
 
 
   //RUN ON START
-  grunt.registerTask('init',       ['notify:initStart', 'wiredep', 'bowercopy', 'copy:css', 'copy:js', 'copy:images', 'sass:dev', 'vulcanize', 'concat', 'clean', 'notify:initDone']);
+  grunt.registerTask('init',       ['notify:initStart', 'wiredep', 'bowercopy', 'copy:css', 'copy:images', 'sass:dev', 'vulcanize', 'concat', 'notify:initDone']);
 
   //RUN FOR PRODUCTION 
   grunt.registerTask('prod',       ['notify:distStart', 'bowercopy', 'prepJS', 'prepImages', 'prepStyles', 'prepFonts', 'compress:production', 'notify:distDone']);

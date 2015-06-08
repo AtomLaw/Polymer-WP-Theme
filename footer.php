@@ -20,7 +20,6 @@
 <!-- jQuery is called via the WordPress-friendly way via functions.php -->
 
 <!-- this is where we put our custom functions: This is in the enqueue function currently -->
-<!-- <script src="<?php bloginfo('template_directory'); ?>/static/js/footer.js"></script> -->
 <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/static/js/build.js"></script>
 <!-- Asynchronous google analytics; this is the official snippet.
          Replace UA-XXXXXX-XX with your site's ID and domainname.com with your domain, then uncomment to enable.
