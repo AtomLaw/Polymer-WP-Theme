@@ -19,12 +19,20 @@
 			float: right;
 			margin-bottom: 30px;
 		}
+
+		@media all and (min-width: 361px) and (max-width: 765px) {
+		  .label  {
+		    margin-top: 10px;
+		  }
+		}
 	</style>
 
 	<template>
 		<div class="container">
-			<paper-fab class$="{{seticonClass(icon)}}" mini></paper-fab>
-			<span class="label">{{label}}</span>
+			<a href$="[[href]]" title$="{{label}}">
+				<paper-fab class$="{{seticonClass(icon)}}" mini></paper-fab>
+				<span class="label">{{label}}</span>
+			</a>
 		</div>
 	</template>
 </dom-module>
@@ -34,7 +42,8 @@
 			is: 'paper-fab-menu-item',
 			properties: {
 				icon: String,
-				label: String
+				label: String,
+				href: String
 			},
 			seticonClass: function (icon)	{
 				return 'menu-item fa fa-' + icon;

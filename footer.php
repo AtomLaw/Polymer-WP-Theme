@@ -14,9 +14,9 @@
 	<?php wp_footer(); ?>
 
   <paper-fab-menu modal=".container">
-    <paper-fab-menu-item icon="car" label="Macchina"></paper-fab-menu-item>
-    <paper-fab-menu-item icon="user" label="Persona"></paper-fab-menu-item>
-    <paper-fab-menu-item icon="birthday-cake" label="Torta"></paper-fab-menu-item>
+    <paper-fab-menu-item icon="car" label="Macchina" href="<?php echo home_url(); ?>/car"></paper-fab-menu-item>
+    <paper-fab-menu-item icon="user" label="Persona" href="<?php echo home_url(); ?>/persona"></paper-fab-menu-item>
+    <paper-fab-menu-item icon="birthday-cake" label="Torta" href="<?php echo home_url(); ?>/torta"></paper-fab-menu-item>
   </paper-fab-menu>
 
 

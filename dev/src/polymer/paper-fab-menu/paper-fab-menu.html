@@ -10,16 +10,23 @@
 			display: none;
 			position: absolute;
 			bottom: 105%;
-			right: -5%;
-		}		
+			right: 40%;
+		}
+
+    @media all and (min-width: 361px) and (max-width: 765px) {
+      #content  {
+        width: 200px;
+      }
+    }
+
 	</style>
 	<template>
-		<paper-fab icon="add" on-click="show"></paper-fab>
-		<!-- <template is="dom-if" if="{{click}}"> -->
+		<paper-fab icon="more-vert" on-click="show" style="margin:1%"></paper-fab>
+    <span style="margin-left:10%">Menu</span>
 			<div id="content">
 				<content></content>
 			</div>
-		<!-- </template> -->
+    
 	</template>
 </dom-module>
 <script>
