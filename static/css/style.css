@@ -4,20 +4,8 @@
 Style sheet for AllTheTheme
 
 */
-<<<<<<< HEAD
 h1 a,
 h3 a {
-  color: #FF0000;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-paper-fab.cippa {
-  background-color: red;
-=======
-h1 a, .h1,
-h2 a, .h2,
-h3 a, .h3 {
   color: #FF0000;
   text-decoration: none;
   font-weight: bold;
@@ -7168,7 +7156,6 @@ button.close {
   .hidden-print {
     display: none !important;
   }
->>>>>>> 963bcb424c40cb7974d3ef3bbf99db3d53159d70
 }
 
 /*# sourceMappingURL=style.css.map */

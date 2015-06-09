@@ -1,0 +1,44 @@
+<dom-module id="paper-fab-menu-item">
+	<style>
+		.container {
+			display: block;
+			clear: both;
+			right: 5%;
+		}
+		.label {
+			padding: 5px;
+			background-color: rgba(203, 212, 209, 0.6);
+			border-radius: 5px;
+			float: right;
+			margin-right: 5px;
+			margin-top: 1%;
+		}
+		.menu-item	{
+			line-height: 20px;
+			text-align: center;
+			float: right;
+			margin-bottom: 30px;
+		}
+	</style>
+
+	<template>
+		<div class="container">
+			<paper-fab class$="{{seticonClass(icon)}}" mini></paper-fab>
+			<span class="label">{{label}}</span>
+		</div>
+	</template>
+</dom-module>
+<script>
+	(function ()	{
+		Polymer({
+			is: 'paper-fab-menu-item',
+			properties: {
+				icon: String,
+				label: String
+			},
+			seticonClass: function (icon)	{
+				return 'menu-item fa fa-' + icon;
+			}
+		});
+	})();
+</script>

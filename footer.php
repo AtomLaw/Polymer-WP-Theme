@@ -13,6 +13,12 @@
 
 	<?php wp_footer(); ?>
 
+  <paper-fab-menu modal=".container">
+    <paper-fab-menu-item icon="car" label="Macchina"></paper-fab-menu-item>
+    <paper-fab-menu-item icon="user" label="Persona"></paper-fab-menu-item>
+    <paper-fab-menu-item icon="birthday-cake" label="Torta"></paper-fab-menu-item>
+  </paper-fab-menu>
+
 
 <!-- here comes the javascript -->
 <!-- Latest compiled and minified JavaScript -->

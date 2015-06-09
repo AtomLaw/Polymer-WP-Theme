@@ -87,6 +87,8 @@
 
 		<!-- Optional theme -->
 		<link rel="import" href="<?php echo get_template_directory_uri(); ?>/build-elements.html">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
 
 		<!-- This is an un-minified, complete version of Modernizr.
 			 Before you move to production, you should generate a custom build that only has the detects you need. -->
@@ -137,12 +139,5 @@
 		</header>
 
 		<nav id="nav" role="navigation">
-			<paper-fab icon="add"></paper-fab>
-			<!-- <paper-fab-menu icon="menu" closeIcon="close" duration="0.3">
-			  <paper-fab-menu-item icon="info-outline" color="blue;" tooltip="Information"></paper-fab-menu-item>
-			  <paper-fab-menu-item icon="alarm" color="purple;" tooltip="Alarm"></paper-fab-menu-item>
-			  <paper-fab-menu-item icon="star-outline" color="green;" tooltip="Favorites"></paper-fab-menu-item>
-			  <paper-fab-menu-item icon="list" color="orange;" tooltip="List"></paper-fab-menu-item>
-			</paper-fab-menu> -->
 			<?php //wp_nav_menu( array('menu' => 'primary') ); ?>
 		</nav>

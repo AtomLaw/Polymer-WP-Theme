@@ -1,0 +1,83 @@
+<dom-module id="paper-fab-menu">
+	<style>
+		:host {
+			display: block;
+			position: fixed;
+			bottom: 5%;
+			right: 10%;
+		}
+		#content 	{
+			display: none;
+			position: absolute;
+			bottom: 105%;
+			right: -5%;
+		}		
+	</style>
+	<template>
+		<paper-fab icon="add" on-click="show"></paper-fab>
+		<!-- <template is="dom-if" if="{{click}}"> -->
+			<div id="content">
+				<content></content>
+			</div>
+		<!-- </template> -->
+	</template>
+</dom-module>
+<script>
+  // element registration
+  (function () {
+  	Polymer({
+  		is: 'paper-fab-menu',
+  	  	behaviors: [
+  	      Polymer.NeonAnimationRunnerBehavior
+  	    ],
+  	    click: false,
+  	    properties: {
+          modal: {
+            type: String,
+            value: 'body'
+          },
+  	      animationConfig: {
+  	            value: function() {
+  	              return {
+  	                'entry': {
+  	                  // provided by neon-animation/animations/scale-up-animation.html
+  	                  name: 'fade-in-animation',
+  	                  node: this.$.content,
+  	                },
+  	                'exit': {
+  	                  // provided by neon-animation-animations/fade-out-animation.html
+  	                  name: 'fade-out-animation',
+  	                  node: this.$.content
+  	                }
+  	              };
+  	            }
+  	          }
+  	        },
+  	    listeners: {
+  	      // this event is fired when the animation finishes
+  	      'neon-animation-finish': '_onNeonAnimationFinish'
+  	    },
+  	    show: function() {
+  	    	if (this.click)	{
+  	    		this.click = false;
+  	    		// run fade-out-animation
+  	    		this.playAnimation('exit');
+  	    	} else {
+  	    		this.click = true;
+  	    		this.$$('#content').style.display = 'inline-block';
+            document.querySelector(this.modal).style.opacity = 0.6;
+  	    		// run scale-up-animation
+  	    		this.playAnimation('entry');
+  	    	}
+	       
+	    },
+
+  	    _onNeonAnimationFinish: function() {
+  	      if (!this.click) {
+            this.$$('#content').style.display = 'none';
+            document.querySelector(this.modal).style.opacity = 1;
+          }
+  	    },
+  	});
+  })();
+</script>
