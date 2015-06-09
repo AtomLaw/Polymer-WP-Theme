@@ -111,7 +111,7 @@ module.exports = function (grunt) {
         options: {
           'separator': ';',
         },
-        src: ['../src/js/*.js'],
+        src: ['../src/js/**/*.js'],
         dest: '../../static/js/build.js',
       },
     },
@@ -165,9 +165,19 @@ module.exports = function (grunt) {
         },
         files: {
             'modernizr.js': 'modernizr/modernizr.js',
-            'webcomponents-lite.js': 'webcomponentsjs/webcomponents-lite.min.js'
+            'webcomponents-lite.js': 'webcomponentsjs/webcomponents-lite.min.js',
+            'bootstrap': 'bootstrap-sass/assets/javascripts/',
+
         }
       },
+      css: {
+        options: {
+          destPrefix: '../src/scss/'
+        },
+        files: {
+          'bootstrap': 'bootstrap-sass/assets/stylesheets',
+        }
+      }
     },
     //end Bower copy
     //copy
@@ -212,12 +222,6 @@ module.exports = function (grunt) {
     vulcanize: {
        default: {
          option: {
-          stripExcludes: false,
-          inlineScripts: false,
-          inlineCss: false,
-          implicitStrip: true,
-          stripComments: false,
-          abspath: ''
          },
          files: {
            '../../build-elements.html': ['../src/polymer/elements.html']

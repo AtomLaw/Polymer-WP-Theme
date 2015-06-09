@@ -1,4 +1,6 @@
+static/
 production/
 dev/bower_components/*
 dev/tasks/.sass-cache/
 dev/tasks/node_modules
+build-elements.html

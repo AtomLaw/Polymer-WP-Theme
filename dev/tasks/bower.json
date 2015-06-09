@@ -11,6 +11,7 @@
     "neon-elements": "PolymerElements/neon-elements#1.0.0",
     "platinum-elements": "PolymerElements/platinum-elements#1.0.0",
     "paper-fab-menu": "cwdoh/paper-fab-menu#master"
+    "bootstrap-sass": "~3.3.4"
   },
   "resolutions": {
     "polymer": "^1.0.0",
