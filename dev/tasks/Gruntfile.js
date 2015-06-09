@@ -220,7 +220,7 @@ module.exports = function (grunt) {
           abspath: ''
          },
          files: {
-           '../../buld-elements.html': ['../src/polymer/elements.html']
+           '../../build-elements.html': ['../src/polymer/elements.html']
          },
        },
      },
